@@ -6,7 +6,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/client/index.ts'
+    main: './src/client/index.tsx'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -15,6 +15,9 @@ module.exports = {
   },
   target: 'web',
   devtool: 'source-map',
+  resolve: {
+    extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
+  },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({

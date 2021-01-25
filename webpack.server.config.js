@@ -1,20 +1,18 @@
 const path = require('path');
-const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
-module.exports = (env, argv) => {
-  const SERVER_PATH = (argv.mode === 'production') ?
-    './src/server/server-prod.ts' :
-    './src/server/server-dev.ts'
-
-return ({
+module.exports = (_env) => {
+  return ({
     entry: {
-      server: SERVER_PATH,
+      server: './src/server/server.ts',
     },
     output: {
       path: path.join(__dirname, 'dist'),
       publicPath: '/',
       filename: '[name].js'
+    },
+    resolve: {
+      extensions: ['.js', '.json', '.ts', '.tsx'],
     },
     target: 'node',
     node: {

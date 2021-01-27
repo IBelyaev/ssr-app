@@ -1,7 +1,0 @@
-.article {
-    color: brown;
-
-    &__text {
-        color: green;
-    }
-}

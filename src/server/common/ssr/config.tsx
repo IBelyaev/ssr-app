@@ -5,7 +5,7 @@ import ReactDomServer from 'react-dom/server';
 import React from 'react';
 import webpack from 'webpack';
 
-import AppHtml from '../../../client/app/app-html';
+import AppHtml from '../../../client/components/app-html';
 import App from '../../../client/app';
 import config from '../../../../webpack.dev.config';
 

@@ -1,0 +1,29 @@
+.article {
+    margin: 12px 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 12px;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    &__title {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    &__description {
+        margin-bottom: 12px;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: space-between;
+    }
+}

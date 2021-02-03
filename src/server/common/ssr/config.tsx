@@ -6,11 +6,11 @@ import React from 'react';
 import webpack from 'webpack';
 
 import AppHtml from '../../../client/components/app-html';
-import App from '../../../client/app';
+import Root from '../../../client/root';
 import config from '../../../../webpack.dev.config';
 
 const compiler = webpack(config);
-const appMarkup = ReactDomServer.renderToString(<App />) ;
+const appMarkup = ReactDomServer.renderToString(<Root />) ;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 const jsFiles = IS_PRODUCTION ? ['main.js', 'vendor.js'] : ['main.js'];

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './app';
+import Root from './root';
 
-ReactDOM.render(
-  <App />,
+ReactDOM.render (
+    <Root />,
   document.getElementById('react-container')
 )
 

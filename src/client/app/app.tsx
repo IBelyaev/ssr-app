@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createCn } from 'bem-react-classname';
 
 import { getData } from './ducks/blogs';
+import { openModal, ModalTypes } from './ducks/modal-manager';
 import { blogsSelector } from './ducks/blogs/selectors';
 
 import Article from './ui/article/article';
@@ -14,7 +15,7 @@ const cn = createCn('app');
 const App = React.memo(() => {
     const dispatch = useDispatch();
     const blogs = useSelector(blogsSelector);
-    
+
     useEffect(() => {
         dispatch(getData());
     }, []);
@@ -36,6 +37,9 @@ const App = React.memo(() => {
                     />
                 );
             })}
+            <button onClick={ () => dispatch(openModal(ModalTypes.createBlogModal)) }>
+                Добавить новую статью
+            </button>
         </div>
     )
 });

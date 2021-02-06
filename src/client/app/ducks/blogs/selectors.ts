@@ -1,3 +1,3 @@
 import { RootState } from '../../../store';
 
-export const blogsSelector = (state: RootState) => state.blogs.data;
+export const blogsSelector = ({ blogs }: RootState) => blogs.data;

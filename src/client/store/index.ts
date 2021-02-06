@@ -1,11 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import blogsReducer from '../app/ducks/blogs';
+import modalManagerReducer from '../app/ducks/modal-manager';
 
 const rootReducer = combineReducers({
-    blogs: blogsReducer
+    blogs: blogsReducer,
+    modalManager: modalManagerReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

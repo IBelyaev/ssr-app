@@ -22,9 +22,8 @@ export const getData = createAsyncThunk<BlogInfo[]>(
         const response = await axios.get('http://localhost:8000/blogs');
 
         return response.data;
-      }
-)
-
+    }
+);
 
 const blogsSlice = createSlice({
     name: 'blogSlice',

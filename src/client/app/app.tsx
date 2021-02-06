@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { createCn } from 'bem-react-classname';
 
-import { useAppDispatch } from '../store';
 import { getData } from './ducks/blogs';
 import { blogsSelector } from './ducks/blogs/selectors';
 
@@ -13,7 +12,7 @@ import './app.css';
 const cn = createCn('app');
 
 const App = React.memo(() => {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const blogs = useSelector(blogsSelector);
     
     useEffect(() => {

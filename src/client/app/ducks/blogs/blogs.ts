@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 type BlogInfo = {
     title: string;
@@ -15,42 +16,25 @@ const initialState: BlogSlice = {
     data: null
 };
 
-const mock_data = [
-    {
-        title: 'Что-то новое',
-        description: 'Супер новость.Супер новость.Супер новость.Супер новость.Супер новость.',
-        author: 'Tom',
-        date: 1611584012964
-    }, {
-        title: 'Что-то новое',
-        description: 'Супер новость.Супер новость.Супер новость.Супер новость.Супер новость.',
-        author: 'Tom',
-        date: 1611584012964
-    }, {
-        title: 'Что-то новое',
-        description: 'Супер новость.Супер новость.Супер новость.Супер новость.Супер новость.',
-        author: 'Tom',
-        date: 1611584012964
-    }, {
-        title: 'Что-то новое',
-        description: 'Супер новость.Супер новость.Супер новость.Супер новость.Супер новость.',
-        author: 'Tom',
-        date: 1611584012964
-    },
-]
+export const getData = createAsyncThunk<BlogInfo[]>(
+    'blogSlice/getData',
+    async () => {
+        const response = await axios.get('http://localhost:8000/blogs');
+
+        return response.data;
+      }
+)
+
 
 const blogsSlice = createSlice({
     name: 'blogSlice',
     initialState,
-    reducers: {
-        // getData: (state, action: PayloadAction<BlogInfo>) => {
-        //     state.data = action.payload
-        // }
-
-        getData: (state) => {
-            state.data = mock_data;
-        }
-    },
+    reducers: {},
+    extraReducers: builder => {
+        builder.addCase(getData.fulfilled, (state, { payload }) => {
+            state.data = payload
+          })
+      }
 });
 
 export default blogsSlice;

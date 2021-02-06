@@ -1,9 +1,8 @@
-import { combineReducers, createStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import blogsReducer from '../app/ducks/blogs';
-
-type AppDispatch = typeof store.dispatch;
 
 const rootReducer = combineReducers({
     blogs: blogsReducer
@@ -11,8 +10,9 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-const store = createStore(rootReducer);
-
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: [thunk],
+});
 
 export default store;

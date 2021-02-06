@@ -1,5 +1,5 @@
 import blogsSlice from './blogs';
 
-export const { getData } = blogsSlice.actions;
+export { getData } from './blogs';
 
 export default blogsSlice.reducer;

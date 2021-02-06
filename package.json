@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/IBelyaev/ssr-app#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
     "bem-react-classname": "^1.3.2",
     "express": "4.17.1",
     "mongoose": "5.11.13",

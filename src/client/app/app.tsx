@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { createCn } from 'bem-react-classname';
 
-import { add_data } from '../redux/actions/test';
+import { useAppDispatch } from '../store';
+import { getData } from './ducks/blogs';
+import { blogsSelector } from './ducks/blogs/selectors';
 
 import Article from './ui/article/article';
 
@@ -10,23 +12,24 @@ import './app.css';
 
 const cn = createCn('app');
 
-const App = () => {
-    const dispatch = useDispatch();
-    const data = useSelector((state: any) => state.dataReducer.data);
+const App = React.memo(() => {
+    const dispatch = useAppDispatch();
+    const blogs = useSelector(blogsSelector);
     
     useEffect(() => {
-        dispatch(add_data());
+        dispatch(getData());
     }, []);
     
-    if (!data) {
+    if (!blogs) {
         return null;
     }
 
     return (
         <div className={cn()}>
-            {data.map((someData: any) => {
+            {blogs.map((someData) => {
                 return (
                     <Article
+                        key={someData.title}
                         title={someData.title}
                         description={someData.description}
                         author={someData.author}
@@ -36,6 +39,6 @@ const App = () => {
             })}
         </div>
     )
-}
+});
 
 export default App;

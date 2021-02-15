@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createCn } from 'bem-react-classname';
+import { Button } from '@alfalab/core-components/button';
 
 import { getData } from './ducks/blogs';
 import { openModal, ModalTypes } from './ducks/modal-manager';
@@ -36,10 +37,12 @@ const App = React.memo(() => {
                         date={someData.date}
                     />
                 );
-            })}
-            <button onClick={ () => dispatch(openModal(ModalTypes.createBlogModal)) }>
-                Добавить новую статью
-            </button>
+             })}
+             <Button
+                 view='primary'
+                 onClick={ () => dispatch(openModal(ModalTypes.createBlogModal)) }>
+                 Добавить новую статью
+             </Button>
         </div>
     )
 });

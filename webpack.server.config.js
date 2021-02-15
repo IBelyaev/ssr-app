@@ -1,6 +1,5 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = () => {
   return ({
@@ -20,7 +19,10 @@ module.exports = () => {
       __dirname: false,
       __filename: false,
     },
-    externals: [nodeExternals()],
+    externals: [nodeExternals({
+      allowlist: [ /^@alfalab\/core-components/ ],
+      modulesFromFile: true,
+  })],
     module: {
       rules: [
         {
@@ -33,7 +35,6 @@ module.exports = () => {
         {
           test: /\.css$/,
           use: [
-            MiniCssExtractPlugin.loader,
             'css-loader',
             {
               loader: 'postcss-loader',
@@ -46,12 +47,6 @@ module.exports = () => {
           ]
         },
       ]
-    },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-        chunkFilename: '[id].css'
-      })
-    ]
+    }
   })
 }

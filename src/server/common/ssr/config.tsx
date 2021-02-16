@@ -14,9 +14,13 @@ const appMarkup = ReactDomServer.renderToString(<Root />) ;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 const jsFiles = IS_PRODUCTION ? ['main.js', 'vendor.js'] : ['main.js'];
+const cssFiles = IS_PRODUCTION ? ['vendor.css', 'main.css'] : ['main.css'];
 
 const html = ReactDomServer.renderToStaticMarkup(
-    <AppHtml scriptNames={jsFiles}>
+    <AppHtml
+        styleNames={cssFiles}
+        scriptNames={jsFiles}
+    >
         {appMarkup}
     </AppHtml>
 );

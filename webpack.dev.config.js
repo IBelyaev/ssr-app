@@ -64,11 +64,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/client/index.html',
-      filename: './index.html',
-      excludeChunks: [ 'server' ]
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin(),

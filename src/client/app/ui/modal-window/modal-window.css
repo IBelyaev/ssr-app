@@ -1,0 +1,30 @@
+.modal-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.6);
+    z-index: 9999;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    &__test {
+        position: relative;
+        box-sizing: border-box;
+        width: 600px;
+        display: flex;
+        flex: 0 0 auto;
+        border-radius: 8px;
+        padding: 24px 48px 30px;
+        border: 0;
+        background: #fff;
+        overflow: auto;
+        margin: auto;
+        max-width: 600px;
+        width: 100%;
+    }
+}

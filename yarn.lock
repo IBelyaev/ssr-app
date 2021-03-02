@@ -2,6 +2,53 @@
 # yarn lockfile v1
 
 
+"@alfalab/core-components-button@^1.15.1":
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/@alfalab/core-components-button/-/core-components-button-1.15.1.tgz#860d92c28b519fadc119d69726961c28e14fe343"
+  integrity sha512-Qe/ZFixiHU5gY5m3HfpIh6FoKMA/EcyOW9EUSFre0OuH8Bo2R6VfVwbY8WnLuvlgDBcfFSrEDi7eK3L4EaLOig==
+  dependencies:
+    "@alfalab/core-components-loader" "^1.1.0"
+    "@alfalab/hooks" "^1.0.0"
+    classnames "^2.2.6"
+    react-merge-refs "^1.1.0"
+
+"@alfalab/core-components-form-control@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@alfalab/core-components-form-control/-/core-components-form-control-5.0.4.tgz#2c9724b587c97f7c2526593de496c4f2ea41efbc"
+  integrity sha512-VDrvs5jxwmmVDsy8qYXW4pcr632qFr0B5xPfFBKLojz8NNUHB7hMYQ6/YvGBxcLDOXfgnp8YXtFWixGtcBB/yA==
+  dependencies:
+    classnames "^2.2.6"
+
+"@alfalab/core-components-input@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@alfalab/core-components-input/-/core-components-input-5.1.3.tgz#210c4e0272c318043beb959f4ab221c5b6c85369"
+  integrity sha512-6AIF4snPZeS7YjCSMraqvQhzHtbZ7GJslrdIoskeBazaKnzddzSwvfy3d/Fk6sq13RoFnE5rYYYcj6WAexUY9A==
+  dependencies:
+    "@alfalab/core-components-button" "^1.15.1"
+    "@alfalab/core-components-form-control" "^5.0.4"
+    "@alfalab/hooks" "^1.0.0"
+    "@alfalab/icons-glyph" "^1.26.0"
+    classnames "^2.2.6"
+    react-merge-refs "^1.1.0"
+
+"@alfalab/core-components-loader@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@alfalab/core-components-loader/-/core-components-loader-1.1.0.tgz#c768d052661a8a97d35ce36f173e12a0e3602969"
+  integrity sha512-SY3ZHvOC7FyT2xmxEnPte/G6Lo2REVJI9DltpV360neujkg0AWyUt5t76o0L0MekbX92nfstLP1hiiotlK69og==
+  dependencies:
+    classnames "^2.2.6"
+
+"@alfalab/core-components-textarea@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@alfalab/core-components-textarea/-/core-components-textarea-4.0.2.tgz#e087a8d852f537be7c168dc3e58fc0b95d151560"
+  integrity sha512-QKBGJr0p90SerxMNBRMzIv6jpN1ZZhjewYOWHKei55uQh2yecbdXvRq/kv1isiavjGdit28j0xauVYyaRSJ2Fw==
+  dependencies:
+    "@alfalab/core-components-form-control" "^5.0.4"
+    "@alfalab/hooks" "^1.0.0"
+    classnames "^2.2.6"
+    react-merge-refs "^1.1.0"
+    react-textarea-autosize "^8.2.0"
+
 "@alfalab/core-components@^10.4.2":
   version "10.4.2"
   resolved "https://registry.yarnpkg.com/@alfalab/core-components/-/core-components-10.4.2.tgz#f6cccc4c1feac1934cee4597ad048fc21f9afed1"
@@ -51,6 +98,11 @@
   resolved "https://registry.yarnpkg.com/@alfalab/icons-flag/-/icons-flag-1.3.0.tgz#edd1b82a92954ed5339d51083d83ec41f7ff77fb"
   integrity sha512-kvVrwjKw6TZfbr9xaK7/e/QtkOAT5HzsWTI2rtvrIp0tzwnkQzp1cCHsiX/mt6h+YOixWfDGYbYEL2RKHFrBaw==
 
+"@alfalab/icons-glyph@^1.26.0":
+  version "1.102.0"
+  resolved "https://registry.yarnpkg.com/@alfalab/icons-glyph/-/icons-glyph-1.102.0.tgz#5e403273e08bfce32719d571f9ab2cc121121546"
+  integrity sha512-s4Y/kxRsAyGWjseauTUSQdQrDVDkauyLeVY0pJ0pQ5fSZkaFxZIXUYG9E1OpNhRPOfU9lJdnwY67zJE7jjIIjQ==
+
 "@alfalab/icons-glyph@^1.96.0":
   version "1.101.0"
   resolved "https://registry.yarnpkg.com/@alfalab/icons-glyph/-/icons-glyph-1.101.0.tgz#5baa4b850519444965afbc82b33de5f19484b58e"
@@ -86,6 +138,13 @@
     "@babel/helper-validator-identifier" "^7.12.11"
     chalk "^2.0.0"
     js-tokens "^4.0.0"
+
+"@babel/runtime@^7.10.0":
+  version "7.13.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.7.tgz#d494e39d198ee9ca04f4dcb76d25d9d7a1dc961a"
+  integrity sha512-h+ilqoX998mRVM5FtB5ijRuHUDVt5l3yfoOi2uh18Z/O3hvyaHQ39NpxVkCIG5yFs+mLq/ewFp8Bss6zmWv6ZA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
 
 "@babel/runtime@^7.10.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.7":
   version "7.12.13"
@@ -1662,6 +1721,13 @@ fill-range@^7.0.1:
   integrity sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==
   dependencies:
     to-regex-range "^5.0.1"
+
+final-form@^4.20.1:
+  version "4.20.1"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.20.1.tgz#525a7f7f27f55c28d8994b157b24d6104fc560e9"
+  integrity sha512-IIsOK3JRxJrN72OBj7vFWZxtGt3xc1bYwJVPchjVWmDol9DlzMSAOPB+vwe75TUYsw1JaH0fTQnIgwSQZQ9Acg==
+  dependencies:
+    "@babel/runtime" "^7.10.0"
 
 finalhandler@~1.1.2:
   version "1.1.2"
@@ -3801,6 +3867,18 @@ react-fast-compare@^3.0.1:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
+react-final-form-hooks@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-final-form-hooks/-/react-final-form-hooks-2.0.2.tgz#edd3d058d5eda620681644cb022861c5efe7955a"
+  integrity sha512-Q8ZP1B0vyAsJ3E8T8QEbje6ECdvD7xkNUd95iMoZuuXAuAtjEHoj8fL8SWxm3V/tG1GPwMkmKS/DPTYlVaaMVg==
+
+react-final-form@^6.5.2:
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-6.5.2.tgz#d04d1eb7d92eabc6f6c35206bb0eebfc4bfd924b"
+  integrity sha512-c5l45FYOoxtfpvsvMFh3w2WW8KNxbuebBUrM16rUrooQkewTs0Zahmv0TuKFX5jsC9BKn5Fo84j3ZVXQdURS4w==
+  dependencies:
+    "@babel/runtime" "^7.12.1"
 
 react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"

@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createCn } from 'bem-react-classname';
 import { Button } from '@alfalab/core-components/button';
 
-import { getData } from './ducks/blogs';
-import { openModal, ModalTypes } from './ducks/modal-manager';
+import { Blog } from '../../server/blogs/models/blog.model';
+import { getData, createNewBlogArticle } from './ducks/blogs';
+import { openModal, ModalTypes, closeModal } from './ducks/modal-manager';
 import { openModalTypeSelector } from './ducks/modal-manager/selectors';
 import { blogsSelector } from './ducks/blogs/selectors';
-import ModalWindow from './ui/modal-window';
+import CreateArticleWindow from './ui/create-article-window';
 import Article from './ui/article/article';
 
 import './app.css';
@@ -21,6 +22,21 @@ const App = React.memo(() => {
 
     const openModalActon = useCallback(
         () => dispatch(openModal(ModalTypes.createBlogModal)),
+        []
+    );
+
+    const closeModalActon = useCallback(
+        () => {
+            dispatch(closeModal())
+        },
+        []
+    );
+
+    const createNewBlogArticleAction = useCallback(
+        (articleData: Blog) => {
+            dispatch(createNewBlogArticle(articleData));
+            closeModalActon();
+        },
         []
     );
 
@@ -54,9 +70,10 @@ const App = React.memo(() => {
                 Добавить новую статью
             </Button>
             { openModalType && (
-                <ModalWindow>
-                    Какая то инфа
-                </ModalWindow>
+                <CreateArticleWindow
+                    onSubmit={createNewBlogArticleAction}
+                    onClose={closeModalActon}
+                />
             )}
         </div>
     )

@@ -1,0 +1,32 @@
+.create-article-window {
+    &__header {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__icon {
+        cursor: pointer;
+    }
+
+    &__body {
+        margin: 24px 0;
+    }
+
+    &__input {
+        margin-bottom: 16px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &__footer {
+        display: flex;
+    }
+
+    &__create-btn {
+        margin-right: 24px;
+    }
+}

@@ -4,9 +4,14 @@ import BlogModels from '../models/blog.model';
 
 const BlogController = {
     insert: (req: express.Request, res: express.Response) => {
-        BlogModels.createBlog(req.body).then((result) => {
-            res.status(201).send({id: result._id});
-        });
+        const date = new Date().getTime();
+        const blogData = { ...req.body, date };
+
+        BlogModels
+            .createBlog(blogData)
+            .then((result) => {
+                res.status(201).send({id: result._id});
+            });
     },
     list: (_req: express.Request, res: express.Response) => {    
         BlogModels

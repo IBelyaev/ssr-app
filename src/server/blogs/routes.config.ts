@@ -9,4 +9,8 @@ export default function (app: Express) {
     app.get('/blogs', [
         BlogController.list
     ])
+
+    app.delete('/blog/:blog_id', [
+        BlogController.delete
+    ])
 };

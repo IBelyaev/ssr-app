@@ -5,6 +5,7 @@ body {
 .app {
     background-color: #dae0e6;
     padding: 0 25%;
+    min-height: 100%;
 
     &__add-btn {
         margin-top: 12px;

@@ -40,7 +40,21 @@ const BlogModels = {
                     }
                 })
         });
-    }
+    },
+    delete: (_id: string) => (
+        new Promise((resolve, reject) => {
+            BlogModel
+                .find({ _id })
+                .remove()
+                .exec((err) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve('success');
+                    }
+                })
+        })
+    )
 };
 
 export default BlogModels;

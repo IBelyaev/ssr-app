@@ -10,7 +10,7 @@ const BlogController = {
         BlogModels
             .createBlog(blogData)
             .then((result) => {
-                res.status(201).send({id: result._id});
+                res.status(200).send({id: result._id});
             });
     },
     list: (_req: express.Request, res: express.Response) => {    
@@ -18,6 +18,15 @@ const BlogController = {
             .list()
             .then((result) => {
                 res.status(200).send(result);
+            });
+    },
+    delete: (req: express.Request, res: express.Response) => {    
+        const { blog_id } = req.params;
+
+        BlogModels
+            .delete(blog_id)
+            .then((result) => {
+                res.status(200).send('success');
             });
     }
 };

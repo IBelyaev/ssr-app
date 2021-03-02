@@ -24,7 +24,10 @@ const Article = React.memo(({ title, description, author, date }: Props) => {
 
     return (
         <div className={cn()}>
-            <div className={cn('title')}>{title}</div>
+            <div>
+                <div className={cn('title')}>{title}</div>
+                <div className={cn('close-btn')}>x</div>
+            </div>
             <div className={cn('description')}>{description}</div>
             <div className={cn('button')}>
                 <div className={cn('date')}>Дата создания: {createDate}</div>

@@ -4,7 +4,7 @@ import { createCn } from 'bem-react-classname';
 import { Button } from '@alfalab/core-components/button';
 
 import { Blog } from '../../server/blogs/models/blog.model';
-import { getData, createNewBlogArticle } from './ducks/blogs';
+import { getData, createNewBlogArticle, deleteBlogArticle } from './ducks/blogs';
 import { openModal, ModalTypes, closeModal } from './ducks/modal-manager';
 import { openModalTypeSelector } from './ducks/modal-manager/selectors';
 import { blogsSelector } from './ducks/blogs/selectors';
@@ -32,6 +32,15 @@ const App = React.memo(() => {
         []
     );
 
+    const deleteBlogArticleAction = useCallback(
+        (articleId: string) => {
+            dispatch(deleteBlogArticle(articleId));
+            closeModalActon();
+        },
+        []
+    );
+
+
     const createNewBlogArticleAction = useCallback(
         (articleData: Blog) => {
             dispatch(createNewBlogArticle(articleData));
@@ -39,6 +48,7 @@ const App = React.memo(() => {
         },
         []
     );
+    
 
     useEffect(() => {
         dispatch(getData());
@@ -51,13 +61,17 @@ const App = React.memo(() => {
     return (
         <div className={ cn() }>
             {blogs.map((someData) => {
+                console.log(someData)
+
                 return (
                     <Article
-                        key={ someData.title }
+                        key={ someData._id }
+                        id={ someData._id }
                         title={ someData.title }
                         description={ someData.description }
                         author={ someData.author }
                         date={ someData.date }
+                        onDelete={ deleteBlogArticleAction }
                     />
                 );
             })}

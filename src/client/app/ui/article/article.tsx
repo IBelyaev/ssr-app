@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { createCn } from 'bem-react-classname';
 
 import './article.css';
@@ -17,16 +17,19 @@ type Props = {
     title: string;
     description: string;
     author: string;
+    onDelete: (id: string) => void;
+    id: string;
 };
 
-const Article = React.memo(({ title, description, author, date }: Props) => {
+const Article = React.memo(({ title, description, author, date, id, onDelete }: Props) => {
     const createDate = useMemo(() => new Date(date).toLocaleString('RU', dateOptions), [date]);
+    const onDeleteMemorize = useCallback(() => onDelete(id), [onDelete, id]);
 
     return (
         <div className={cn()}>
             <div>
                 <div className={cn('title')}>{title}</div>
-                <div className={cn('close-btn')}>x</div>
+                <div onClick={onDeleteMemorize} className={cn('close-btn')}>x</div>
             </div>
             <div className={cn('description')}>{description}</div>
             <div className={cn('button')}>

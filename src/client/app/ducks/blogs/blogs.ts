@@ -8,6 +8,7 @@ type BlogInfo = {
     description: string;
     author: string;
     date: number;
+    _id: string;
 };
 
 type BlogSlice = {
@@ -29,8 +30,19 @@ export const getData = createAsyncThunk<BlogInfo[]>(
 
 export const createNewBlogArticle = createAsyncThunk<BlogInfo[], Blog>(
     'blogSlice/createBlogArticle',
-    async (articleData: Blog) => {
+    async (articleData) => {
         await axios.post('http://localhost:8000/blog', articleData);
+        
+        const response = await axios.get('http://localhost:8000/blogs');
+
+        return response.data;
+    }
+);
+
+export const deleteBlogArticle = createAsyncThunk<BlogInfo[], string>(
+    'blogSlice/deleteBlogArticle',
+    async (id) => {
+        await axios.delete(`http://localhost:8000/blog/${id}`);
         
         const response = await axios.get('http://localhost:8000/blogs');
 
@@ -48,6 +60,9 @@ const blogsSlice = createSlice({
                 state.data = payload
             })
             .addCase(createNewBlogArticle.fulfilled, (state, { payload }) => {
+                state.data = payload
+            })
+            .addCase(deleteBlogArticle.fulfilled, (state, { payload }) => {
                 state.data = payload
             })
     }

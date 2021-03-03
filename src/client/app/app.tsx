@@ -61,7 +61,6 @@ const App = React.memo(() => {
     return (
         <div className={ cn() }>
             {blogs.map((someData) => {
-                console.log(someData)
 
                 return (
                     <Article

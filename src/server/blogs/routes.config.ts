@@ -3,7 +3,7 @@ import BlogController from './controllers/blog.controller';
 
 export default function (app: Express) {
     app.post('/blog', [
-        BlogController.insert
+        BlogController.create
     ])
 
     app.get('/blogs', [
@@ -12,5 +12,9 @@ export default function (app: Express) {
 
     app.delete('/blog/:blog_id', [
         BlogController.delete
+    ])
+
+    app.get('/blog:blog_id', [
+        BlogController.getBlog
     ])
 };

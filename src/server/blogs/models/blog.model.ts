@@ -32,7 +32,7 @@ const BlogModels = {
     list: () => {
         return new Promise((resolve, reject) => {
             BlogModel.find()
-                .exec(function (err, users) {
+                .exec((err, users) => {
                     if (err) {
                         reject(err);
                     } else {
@@ -54,7 +54,20 @@ const BlogModels = {
                     }
                 })
         })
-    )
+    ),
+    getBlog: (_id: string) => {
+        return new Promise((resolve, reject) => {
+            BlogModel
+                .find({ _id })
+                .exec((err, user) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(user);
+                    }
+                })
+        });
+    },
 };
 
 export default BlogModels;

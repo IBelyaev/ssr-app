@@ -1,9 +1,9 @@
 import express from 'express'
 
-import BlogModels from '../models/blog.model';
+import BlogModels, { Blog } from '../models/blog.model';
 
 const BlogController = {
-    insert: (req: express.Request, res: express.Response) => {
+    create: (req: express.Request, res: express.Response) => {
         const date = new Date().getTime();
         const blogData = { ...req.body, date };
 
@@ -27,6 +27,17 @@ const BlogController = {
             .delete(blog_id)
             .then((result) => {
                 res.status(200).send('success');
+            });
+    },
+    getBlog: (req: express.Request, res: express.Response) => {    
+        const { blog_id } = req.query;
+
+        BlogModels
+            .getBlog(blog_id as string)
+            .then((result) => {
+                res.status(200).send(result);
+            }).catch((error) => {
+                res.status(400).send(error);
             });
     }
 };

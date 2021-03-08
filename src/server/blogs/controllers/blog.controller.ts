@@ -25,11 +25,11 @@ const BlogController = {
 
         BlogModels
             .delete(blog_id)
-            .then((result) => {
+            .then(() => {
                 res.status(200).send('success');
             });
     },
-    getBlog: (req: express.Request, res: express.Response) => {    
+    getBlog: (req: express.Request, res: express.Response) => {  
         const { blog_id } = req.query;
 
         BlogModels
@@ -39,7 +39,19 @@ const BlogController = {
             }).catch((error) => {
                 res.status(400).send(error);
             });
-    }
+    },
+    update: (req: express.Request, res: express.Response) => {  
+        const { blog_id } = req.params;
+        const data = req.body;
+
+        BlogModels
+            .update(blog_id, data)
+            .then((result) => {
+                res.status(200).send(result);
+            }).catch((error) => {
+                res.status(400).send(error);
+            });
+    },
 };
 
 export default BlogController;

@@ -14,7 +14,11 @@ export default function (app: Express) {
         BlogController.delete
     ])
 
-    app.get('/blog:blog_id', [
+    app.get('/blog', [
         BlogController.getBlog
+    ])
+
+    app.put('/blog/:blog_id', [
+        BlogController.update
     ])
 };

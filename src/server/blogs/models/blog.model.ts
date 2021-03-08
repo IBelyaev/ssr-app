@@ -9,7 +9,7 @@ export interface Blog {
     author: string;
 };
 
-interface BlogBaseDocument extends Blog, Document {};
+export interface BlogBaseDocument extends Blog, Document {};
 
 const blogSchema: Schema<BlogBaseDocument> = new Schema({
     title: String,
@@ -68,6 +68,19 @@ const BlogModels = {
                 })
         });
     },
+    update: (_id: string, userData: Blog) => (
+        new Promise((resolve, reject) => {
+            BlogModel
+            .findByIdAndUpdate(_id, userData)
+            .exec((err, users) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(users);
+                }
+            })
+        })
+    )
 };
 
 export default BlogModels;

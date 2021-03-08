@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { createCn } from 'bem-react-classname';
 import { useForm, useField } from 'react-final-form-hooks';
 import { Typography } from '@alfalab/core-components/typography';
@@ -7,7 +7,8 @@ import { Input } from '@alfalab/core-components-input';
 import { Textarea } from '@alfalab/core-components-textarea';
 import { Button } from '@alfalab/core-components-button';
 
-import { Blog } from '../../../../server/blogs/models/blog.model';
+import { Blog, BlogBaseDocument } from '../../../../server/blogs/models/blog.model';
+import { ChangeBlogArticleArgs } from '../../ducks/blogs/blogs';
 import ModalWindow from '../modal-window-wrapper';
 
 import './create-article-window.css';
@@ -15,6 +16,8 @@ import './create-article-window.css';
 type Props = {
     onClose: () => void;
     onSubmit: (arg: Blog) => void;
+    initialValues: Blog | null;
+    onChange: (arg: ChangeBlogArticleArgs) => void;
 };
 
 const validate = (values: any) => {
@@ -33,12 +36,16 @@ const validate = (values: any) => {
     return errors
   }
 
-const CreateArticleWindow = React.memo(({onClose, onSubmit}: Props) => {
+const CreateArticleWindow = React.memo(({onClose, onChange, onSubmit, initialValues}: Props) => {
     const cn = createCn('create-article-window');
+
+    const onChangeArticle = useCallback(({_id, ...rest}: BlogBaseDocument) => onChange({id: _id, data: rest as any }), [onChange]);
+
     const { form, handleSubmit } = useForm({
-        onSubmit,
-        validate
-    })
+        onSubmit: initialValues ? onChangeArticle : onSubmit,
+        validate,
+        initialValues: initialValues || undefined
+    });
 
     const {input: titleInputProps, meta: titleMetaProps} = useField('title', form);
     const {input: descriptionInputProps, meta: descriptionMetaProps} = useField('description', form);
@@ -86,7 +93,7 @@ const CreateArticleWindow = React.memo(({onClose, onSubmit}: Props) => {
                         size='s'
                         type="submit"
                     >
-                        Создать статью
+                        { initialValues ? 'Изменить статью' : 'Создать статью' }
                     </Button>
                     <Button
                         size='s'

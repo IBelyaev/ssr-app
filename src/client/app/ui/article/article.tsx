@@ -18,17 +18,21 @@ type Props = {
     description: string;
     author: string;
     onDelete: (id: string) => void;
+    onChange: (id: string) => void;
     id: string;
 };
 
-const Article = React.memo(({ title, description, author, date, id, onDelete }: Props) => {
+const Article = React.memo(({ title, description, author, date, id, onDelete, onChange }: Props) => {
     const createDate = useMemo(() => new Date(date).toLocaleString('RU', dateOptions), [date]);
     const onDeleteMemorize = useCallback(() => onDelete(id), [onDelete, id]);
+    const onChangeMemorize = useCallback(() => onChange(id), [onChange, id]);
+
 
     return (
         <div className={cn()}>
             <div>
                 <div className={cn('title')}>{title}</div>
+                <div onClick={onChangeMemorize} className={cn('change-btn')}>Изменить</div>
                 <div onClick={onDeleteMemorize} className={cn('close-btn')}>x</div>
             </div>
             <div className={cn('description')}>{description}</div>

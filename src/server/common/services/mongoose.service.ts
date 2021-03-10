@@ -9,11 +9,11 @@ const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-    
 };
+
 const connectWithRetry = () => {
     console.log('MongoDB connection with retry')
-    mongoose.connect('mongodb://localhost:27017/ssr-app', options).then(()=>{
+    mongoose.connect('mongodb://mongo:27017/ssr-app', options).then(()=>{
         console.log('MongoDB is connected')
     }).catch(err=>{
         console.log('MongoDB connection unsuccessful, retry after 5 seconds. ', ++count);
